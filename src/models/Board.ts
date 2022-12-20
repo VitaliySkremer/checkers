@@ -33,20 +33,20 @@ export class Board {
 	}
 
 	public getCell(x:number, y:number){
-		return this.cells[x][y];
+		return this.cells[y][x];
 	}
 
 	private addPawns() {
 		for (let i = 0; i < 8; i++){
 			if(i % 2!==0) {
-				new Pawn(Colors.BLACK, this.getCell(0, i));
-				new Pawn(Colors.WHITE, this.getCell(6, i));
-				new Pawn(Colors.BLACK, this.getCell(2, i));
+				new Pawn(Colors.BLACK, this.getCell(i, 0));
+				new Pawn(Colors.WHITE, this.getCell(i, 6));
+				 new Pawn(Colors.BLACK, this.getCell(i, 2));
 			}
 			else {
-				new Pawn(Colors.WHITE, this.getCell(7, i));
-				new Pawn(Colors.BLACK, this.getCell(1, i));
-				new Pawn(Colors.WHITE, this.getCell(5, i));
+				 new Pawn(Colors.WHITE, this.getCell(i, 7));
+				 new Pawn(Colors.BLACK, this.getCell(i, 1));
+				 new Pawn(Colors.WHITE, this.getCell(i, 5));
 			}
 		}
 	}

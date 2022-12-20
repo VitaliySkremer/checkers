@@ -35,13 +35,22 @@ export class Cell {
 		}
 	}
 
-	isEmpty() {
+	isEmpty():boolean {
 		return this.figure === null;
+	}
+
+	isEnemy(target: Cell):boolean{
+		if(target.figure){
+			return this.figure?.color !== target.figure.color;
+		}
+		return false;
 	}
 
 	isEmptyDiagonal(target: Cell): boolean{
 		const absX = Math.abs(target.x - this.x);
 		const absY = Math.abs(target.y - this.y);
+		const direction = this.figure?.color === Colors.BLACK ? 1 : -1;
+
 		if(absY !== absX) {
 			return false;
 		}
@@ -55,6 +64,10 @@ export class Cell {
 			}
 		}
 
-		return true
+		if((target.y === this.y + direction) && this.board.getCell(target.x, target.y).isEmpty()){
+			return true
+		}
+
+		return false
 	}
 }

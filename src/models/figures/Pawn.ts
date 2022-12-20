@@ -10,14 +10,15 @@ export class Pawn extends Figure {
 	}
 
 	canMove(target: Cell): boolean {
+		const absX = Math.abs(target.x - this.cell.x);
+		const absY = Math.abs(target.y - this.cell.y);
+		const direction = this.cell.figure?.color === Colors.BLACK ? 1 : -1;
+
 		if(!super.canMove(target)){
 			return false;
 		}
 		if(this.cell.isEmptyDiagonal(target)) {
-			const absX = Math.abs(target.x - this.cell.x);
-			const absY = Math.abs(target.y - this.cell.y);
-			const direction = this.cell.figure?.color === Colors.BLACK ? 1 : -1;
-			return ((absX === 1 && absY === 1)&& (target.y === this.cell.y + direction))
+			 return true
 		}
 
 		return false
