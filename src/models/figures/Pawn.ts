@@ -18,7 +18,9 @@ export class Pawn extends Figure {
 			return false;
 		}
 		if(this.cell.isEmptyDiagonal(target)) {
-			 return true
+			if((target.y === this.cell.y + direction) && this.cell.board.getCell(target.x, target.y).isEmpty()){
+				return true
+			}
 		}
 
 		return false
