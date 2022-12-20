@@ -33,6 +33,12 @@ export class Cell {
 			target.setFigure(this.figure);
 			this.figure = null;
 		}
+		if(Math.abs(this.x - target.x) === 2){
+			const dx = Math.abs((this.x + target.x)/2)
+			const dy = Math.abs((this.y + target.y)/2)
+
+			this.board.getCell(dx, dy).figure = null
+		}
 	}
 
 	isEmpty():boolean {
@@ -41,28 +47,30 @@ export class Cell {
 
 	isEnemy(target: Cell):boolean{
 		if(target.figure){
-			return this.figure?.color ! == target.figure.color;
+			return this.figure?.color !== target.figure.color;
 		}
 		return false;
+	}
+
+	isKill(target: Cell):boolean {
+		return this.board.getCell((target.x + this.x) / 2, (target.y + this.y) / 2).isEnemy(this) && !this.board.getCell((target.x + this.x) / 2, (target.y + this.y) / 2).isEmpty()
 	}
 
 	isEmptyDiagonal(target: Cell): boolean{
 		const absX = Math.abs(target.x - this.x);
 		const absY = Math.abs(target.y - this.y);
-
 		if(absY !== absX) {
 			return false;
 		}
-
 		const dy = this.y < target.y ? 1 : -1;
 		const dx = this.x < target.x ? 1 : -1;
 
-		for (let i = 1; i < absY; i++) {
-			if(!this.board.getCell(this.x + dx*i, this.y + dy*i).isEmpty()){
+		for (let i = 1; i <= absY; i++) {
+			if(!this.board.getCell(this.x + dx * i, this.y + dy * i).isEmpty()){
 				return false;
 			}
 		}
 
-		return true
+		return false
 	}
 }
