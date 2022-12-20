@@ -62,3 +62,7 @@
     right: 0;
     border: 5px solid teal;
 }
+
+.drug__hover {
+    background-color: rgba(194, 255, 144, 0.5);
+}
