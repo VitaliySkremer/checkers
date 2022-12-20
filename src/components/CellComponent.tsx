@@ -7,10 +7,20 @@ interface CellProps{
 }
 
 export const CellComponent = ({cell, selected, click}:CellProps) => {
+
+	const onDragOver = (event: React.MouseEvent)=>{
+		if(cell.available){
+			event.preventDefault();
+		}
+	}
+
 	return (
 		<div
 			className={['cell', cell.color, selected ? 'selected': ''].join(' ')}
-			onClick={()=>click(cell)}
+			onDrag={()=>click(cell)}
+			onDrop={()=>click(cell)}
+			onDragOver={onDragOver}
+			draggable={!!cell.figure?.logo}
 			style={{backgroundColor: cell.figure && cell.available ? 'green':''}}
 		>
 			{!cell.figure && cell.available && <i className='available'/>}

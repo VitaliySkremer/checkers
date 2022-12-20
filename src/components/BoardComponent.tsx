@@ -31,7 +31,7 @@ export const BoardComponent = ({board, setBoard}: BoardProps) => {
 	}
 
 	function updateBoard() {
-		const newBoard = board.getCoptBoard();
+		const newBoard = board.getCopyBoard();
 		setBoard(newBoard);
 	}
 

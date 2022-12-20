@@ -16,7 +16,7 @@ export class Board {
 		}
 	}
 
-	public getCoptBoard():Board{
+	public getCopyBoard():Board{
 		const newBoard = new Board();
 		newBoard.cells = this.cells;
 		return newBoard;
