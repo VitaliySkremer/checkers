@@ -66,3 +66,17 @@
 .drug__hover {
     background-color: rgba(194, 255, 144, 0.5);
 }
+
+.deathZone {
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    margin-left: 40px;
+    justify-content: center;
+}
+
+.death {
+    display: flex;
+    align-items: center;
+}

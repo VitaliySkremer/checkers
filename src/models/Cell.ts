@@ -36,10 +36,11 @@ export class Cell {
 		if(Math.abs(this.x - target.x) === 2){
 			const dx = Math.abs((this.x + target.x)/2)
 			const dy = Math.abs((this.y + target.y)/2)
-
+			this.board.addDeathFigure(this.board.getCell(dx, dy).figure!);
 			this.board.getCell(dx, dy).figure = null
 		}
 	}
+
 
 	isEmpty():boolean {
 		return this.figure === null;

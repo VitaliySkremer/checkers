@@ -1,9 +1,12 @@
 import {Cell} from "./Cell";
 import {Colors} from "./Colors";
 import {Pawn} from "./figures/Pawn";
+import {Figure} from "./figures/Figure";
 
 export class Board {
 	cells: Cell[][] = [];
+	deathWhiteFigures: Figure[] = [];
+	deathBlackFigures: Figure[] = [];
 
 	public initialCells() {
 		for (let i = 0; i < 8; i++){
@@ -16,9 +19,17 @@ export class Board {
 		}
 	}
 
+	addDeathFigure(figure:Figure){
+		figure.color === Colors.BLACK
+			? this.deathBlackFigures.push(figure)
+			: this.deathWhiteFigures.push(figure)
+	}
+
 	public getCopyBoard():Board{
 		const newBoard = new Board();
 		newBoard.cells = this.cells;
+		newBoard.deathWhiteFigures = this.deathWhiteFigures;
+		newBoard.deathBlackFigures = this.deathBlackFigures;
 		return newBoard;
 	}
 
