@@ -10,6 +10,11 @@
     justify-content: center;
     align-items: center;
     background-color: white;
+
+    background-image: url("/public/img/bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 
 .board {
@@ -68,7 +73,7 @@
 }
 
 .deathZone {
-    background-color: lightgray;
+    background-color: rgba(255,255,255,.5);
     display: flex;
     flex-direction: column;
     padding: 30px;

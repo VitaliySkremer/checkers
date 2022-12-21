@@ -7,8 +7,8 @@ import {Colors} from "./models/Colors";
 import {DeathFigures} from "./components/DeathFigures";
 
 function App() {
-  const [whitePlayer, setWhitePlayer] = useState<Player | null>(new Player(Colors.WHITE))
-  const [blackPlayer, setBlackPlayer] = useState<Player | null>(new Player(Colors.BLACK))
+  const [whitePlayer] = useState<Player | null>(new Player(Colors.WHITE))
+  const [blackPlayer] = useState<Player | null>(new Player(Colors.BLACK))
   const [currentPlayer, setCurrentPlayer] = useState<Player | null>(null)
   const [board, setBoard] = useState(new Board());
 
