@@ -85,3 +85,15 @@
     display: flex;
     align-items: center;
 }
+
+.form__victory {
+    background-color: chocolate;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.victory__title {
+    margin-bottom: 15px;
+}

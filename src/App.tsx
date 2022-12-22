@@ -5,6 +5,7 @@ import {Board} from "./models/Board";
 import {Player} from "./models/Player";
 import {Colors} from "./models/Colors";
 import {DeathFigures} from "./components/DeathFigures";
+import {VinersComponent} from "./components/VinersComponent";
 
 function App() {
   const [whitePlayer] = useState<Player | null>(new Player(Colors.WHITE))
@@ -30,16 +31,21 @@ function App() {
 
   return (
     <div className="App">
-      <BoardComponent
-        board={board}
-        setBoard={setBoard}
-        currentPlayer={currentPlayer}
-        swapPlayer={swapPlayer}
-      />
-      <div className='deathZone'>
-        <DeathFigures title='Чёрные фигуры' color={Colors.BLACK} figures={board.deathBlackFigures}/>
-        <DeathFigures title='Белые фигуры' color={Colors.WHITE} figures={board.deathWhiteFigures}/>
-      </div>
+      {!board.victory.length
+        ?<>
+          <BoardComponent
+            board={board}
+            setBoard={setBoard}
+            currentPlayer={currentPlayer}
+            swapPlayer={swapPlayer}
+          />
+          <div className='deathZone'>
+            <DeathFigures title='Чёрные фигуры' color={Colors.BLACK} figures={board.deathBlackFigures}/>
+            <DeathFigures title='Белые фигуры' color={Colors.WHITE} figures={board.deathWhiteFigures}/>
+          </div>
+        </>
+        :<VinersComponent viners={board.victory[0]} restart={restart}/>
+      }
     </div>
   );
 }

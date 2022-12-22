@@ -2,11 +2,13 @@ import {Cell} from "./Cell";
 import {Colors} from "./Colors";
 import {Pawn} from "./figures/Pawn";
 import {Figure} from "./figures/Figure";
+import {Player} from "./Player";
 
 export class Board {
 	cells: Cell[][] = [];
 	deathWhiteFigures: Figure[] = [];
 	deathBlackFigures: Figure[] = [];
+	victory:Player[] = []
 
 	public initialCells() {
 		for (let i = 0; i < 8; i++){
@@ -20,9 +22,19 @@ export class Board {
 	}
 
 	addDeathFigure(figure:Figure){
-		figure.color === Colors.BLACK
-			? this.deathBlackFigures.push(figure)
-			: this.deathWhiteFigures.push(figure)
+
+		if(figure.color === Colors.BLACK){
+			this.deathBlackFigures.push(figure)
+			if(this.deathBlackFigures.length === 12) {
+				this.victory.push(new Player(Colors.BLACK));
+			}
+		}
+		else {
+			this.deathWhiteFigures.push(figure)
+			if(this.deathWhiteFigures.length === 12) {
+				this.victory.push(new Player(Colors.WHITE));
+			}
+		}
 	}
 
 	public getCopyBoard():Board{
@@ -30,6 +42,7 @@ export class Board {
 		newBoard.cells = this.cells;
 		newBoard.deathWhiteFigures = this.deathWhiteFigures;
 		newBoard.deathBlackFigures = this.deathBlackFigures;
+		newBoard.victory = this.victory;
 		return newBoard;
 	}
 
@@ -52,7 +65,7 @@ export class Board {
 			if(i % 2!==0) {
 				new Pawn(Colors.BLACK, this.getCell(i, 0));
 				new Pawn(Colors.WHITE, this.getCell(i, 6));
-				 new Pawn(Colors.BLACK, this.getCell(i, 2));
+				new Pawn(Colors.BLACK, this.getCell(i, 2));
 			}
 			else {
 				 new Pawn(Colors.WHITE, this.getCell(i, 7));
