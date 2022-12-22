@@ -24,6 +24,7 @@ export const CellComponent = ({cell, selected, click}:CellProps) => {
 	return (
 		<div
 			className={['cell', cell.color, selected ? 'selected': '', drugHover && cell.available?'drug__hover':''].join(' ')}
+			onClick={()=>click(cell)}
 			onDrag={()=>click(cell)}
 			onDrop={onDrop}
 			onDragOver={onDragOver}

@@ -55,6 +55,17 @@
     background-color: black;
 }
 
+.queen__black {
+    background-color: black;
+    border: 2px solid crimson;
+}
+
+
+.queen__white {
+    background-color: white;
+    border: 2px solid crimson;
+}
+
 .selected {
     background-color: aquamarine;
 }

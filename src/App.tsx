@@ -13,9 +13,13 @@ function App() {
   const [currentPlayer, setCurrentPlayer] = useState<Player | null>(null)
   const [board, setBoard] = useState(new Board());
 
-  useEffect(()=>{
+  function restartGame(){
     restart();
     setCurrentPlayer(whitePlayer);
+  }
+
+  useEffect(()=>{
+    restartGame();
   },[])
 
   function restart(){
@@ -44,7 +48,7 @@ function App() {
             <DeathFigures title='Белые фигуры' color={Colors.WHITE} figures={board.deathWhiteFigures}/>
           </div>
         </>
-        :<VinersComponent viners={board.victory[0]} restart={restart}/>
+        :<VinersComponent viners={board.victory[0]} restartGame={restartGame}/>
       }
     </div>
   );

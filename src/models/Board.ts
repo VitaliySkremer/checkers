@@ -8,7 +8,7 @@ export class Board {
 	cells: Cell[][] = [];
 	deathWhiteFigures: Figure[] = [];
 	deathBlackFigures: Figure[] = [];
-	victory:Player[] = []
+	victory:Player[] = [];
 
 	public initialCells() {
 		for (let i = 0; i < 8; i++){
@@ -26,13 +26,13 @@ export class Board {
 		if(figure.color === Colors.BLACK){
 			this.deathBlackFigures.push(figure)
 			if(this.deathBlackFigures.length === 12) {
-				this.victory.push(new Player(Colors.BLACK));
+				this.victory.push(new Player(Colors.WHITE));
 			}
 		}
 		else {
 			this.deathWhiteFigures.push(figure)
 			if(this.deathWhiteFigures.length === 12) {
-				this.victory.push(new Player(Colors.WHITE));
+				this.victory.push(new Player(Colors.BLACK));
 			}
 		}
 	}
