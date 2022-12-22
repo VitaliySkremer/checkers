@@ -83,6 +83,12 @@
     background-color: rgba(194, 255, 144, 0.5);
 }
 
+.board__title {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
 .deathZone {
     background-color: rgba(255,255,255,.5);
     display: flex;
@@ -107,4 +113,34 @@
 
 .victory__title {
     margin-bottom: 15px;
+}
+
+@media all and (max-width: 830px) {
+    .App {
+        flex-direction: column;
+    }
+
+    .board {
+        height: calc(38px *8);
+        width: calc(38px *8);
+        margin-bottom: 10px;
+    }
+
+    .board__title {
+        font-size: 24px;
+    }
+
+    .cell {
+        height: 38px;
+        width: 38px;
+    }
+
+    .cell div {
+        width: 30px;
+        height: 30px;
+    }
+
+    .deathZone {
+        margin: 0;
+    }
 }

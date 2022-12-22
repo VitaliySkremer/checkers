@@ -42,7 +42,7 @@ export const BoardComponent = ({board, setBoard,currentPlayer, swapPlayer}: Boar
 
 	return (
 		<div>
-			<h2 style={{textAlign:'center',marginBottom:'10px', fontSize:'40px'}}>Ход {currentPlayer?.color===Colors.WHITE? 'белого':'чёрного'} игрока</h2>
+			<h2 className='board__title'>Ход {currentPlayer?.color===Colors.WHITE? 'белого':'чёрного'} игрока</h2>
 			<div className='board'>
 				{board.cells.map((row, index)=>
 					<React.Fragment key={index}>
